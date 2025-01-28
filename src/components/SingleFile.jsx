@@ -14,10 +14,12 @@ const TablePage = () => {
   // Calculate total pages
   const totalPages = Math.ceil(excelFile.length / itemsPerPage);
 
+  const [loading, setLoading] = useState(true)
   // Fetch data from the server
   useEffect(() => {
     const fetchExcelFiles = async () => {
       try {
+        
         const response = await axios.get(`http://localhost:8000/get-excel/${id}`); // Adjust the URL as needed
         console.log(response.data); // Log the response to verify its structure
 
@@ -30,6 +32,8 @@ const TablePage = () => {
       } catch (err) {
         setError("Error fetching data");
         console.error(err);
+      }finally{
+        setLoading(false)
       }
     };
 
@@ -138,7 +142,7 @@ const TablePage = () => {
           ) : (
             <tr>
               <td colSpan="7" className="text-center">
-                No data available
+                {loading == true ? "Loading...":"No data available"}
               </td>
             </tr>
           )}
