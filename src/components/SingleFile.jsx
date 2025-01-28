@@ -116,6 +116,8 @@ const TablePage = () => {
             <th>Product</th>
             <th>Source</th>
             <th>Segment</th>
+            <th>Net Orders</th>
+            <th>Total Cost</th>
           </tr>
         </thead>
         <tbody>
@@ -129,6 +131,8 @@ const TablePage = () => {
                 <td>{item.Product}</td>
                 <td>{item.Source}</td>
                 <td>{item.Segment}</td>
+                <td>{item.Net_Orders}</td>
+                <td>{item.Total_Cost}</td>
               </tr>
             ))
           ) : (
